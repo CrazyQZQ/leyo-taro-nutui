@@ -1,18 +1,30 @@
 <template>
   <view class="index">
     <view>
-      <img src="" alt="">
+      <nut-swiper init-page="1" :pagination-visible="true" pagination-color="#426543" auto-play="3000">
+        <nut-swiper-item>
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg'" alt="" />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </nut-swiper-item>
+        <nut-swiper-item>
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </nut-swiper-item>
+      </nut-swiper>
     </view>
-    {{ msg }}
     <view class="btn">
-      <nut-button type="primary" @click="handleClick('text', msg2, true)">点我</nut-button>
+
     </view>
-    <nut-toast :msg="msg" v-model:visible="show" :type="type" :cover="cover" />
   </view>
 </template>
 
 <script>
 import { reactive, toRefs } from 'vue';
+import Taro from '@tarojs/taro';
 export default {
   name: 'Index',
   components: {
@@ -27,11 +39,10 @@ export default {
       cover: false
     });
 
-    const handleClick = (type, msg, cover = false) => {
-      state.show = true;
-      state.msg2 = msg;
-      state.type = type;
-      state.cover = cover;
+    const handleClick = () => {
+      Taro.navigateTo({
+        url: `/pages/mine/index`
+      });
     };
 
     return {

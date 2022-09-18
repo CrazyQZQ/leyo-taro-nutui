@@ -1,3 +1,4 @@
+const path = require('path')
 const config = {
   projectName: 'leyo-taro-nutui',
   date: '2022-9-16',
@@ -8,9 +9,15 @@ const config = {
     828: 1.81 / 2,
     375: 2 / 1
   },
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src')
+  },
   sourceRoot: 'src',
   outputRoot: 'dist',
-  plugins: ['@tarojs/plugin-html'],
+  plugins: [
+    '@tarojs/plugin-html',
+    'taro-plugin-pinia'
+  ],
   defineConstants: {
   },
   copy: {
@@ -48,6 +55,9 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
+    },
+    optimizeMainPackage: {
+      enable: true
     }
   },
   h5: {
